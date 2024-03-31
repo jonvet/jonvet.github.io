@@ -1,0 +1,690 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Superposition - Personal page</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Personal page">
+<meta property="og:title" content="Superposition">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2024/02/superposition/">
+  <meta property="og:url" content="http://localhost:4000/posts/2024/02/superposition/">
+
+
+
+  <meta property="og:description" content="What is superposition? And how can something be in two states at the same time?">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-02-03T00:00:00-06:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Jonas Vetterle",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Personal page Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<!--
+      	bra: ["{\\left<#1\\right|}",1],
+				ket: ["{\\left|#1\\right>}",1],
+				braket: ["{\\left<#1\\right>}",1]
+      processEscapes: true
+-->
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\(","\\)"] ],
+    },
+		TeX: {
+    	Macros: {
+				bra: ["\\langle{#1}|", 1],
+				ket: ["|{#1}\\rangle", 1],
+        braket: ["\\langle{#1}\\rangle", 1],
+				bk: ["\\langle{#1}|{#2}|{#3}\\rangle", 3]
+    	}
+  	}
+	},
+	{
+  "HTML-CSS": { linebreaks: { automatic: true } },
+         SVG: { linebreaks: { automatic: true } }
+});
+
+</script>
+<!--
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' async></script>
+-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<!-- end custom head snippets -->
+
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Personal page</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/posts/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/avatar.jpg" class="author__avatar" alt="Jonas Vetterle">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Jonas Vetterle</h3>
+    <p class="author__bio">Staff ML Engineer @ Moonfire</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> London, UK</li>
+      
+      
+      
+      
+      
+       
+      
+        <li><a href="https://twitter.com/jvetterle"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://www.linkedin.com/in/jonasvetterle"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/jonvet"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Superposition">
+    <meta itemprop="description" content="What is superposition? And how can something be in two states at the same time?">
+    <meta itemprop="datePublished" content="February 03, 2024">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Superposition
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  15 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-02-03T00:00:00-06:00">February 03, 2024</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>What is superposition? And how can something be in two states at the same time?</p>
+
+<h1 id="introduction">Introduction</h1>
+<p>One thing that can be really confusing is the notion of a qubit being in a superposition of states. After all, how can something be in two states at the same time? It’s not like a coin can be both heads and tails at the same time, right?</p>
+
+<p>The closest we can get to that is by spinning the coin, and while it’s spinning, it’s neither heads nor tails. And as soon as it lands, it’s either heads or tails.
+But that’s different from the coin being in both states at the same time - it’s just the coin spinning back and forth between heads and tails and us not knowing which state it’s in until we look at it.</p>
+
+<p>In this article we’ll see mathematically why it’s the case the superposition is different from mere uncertainty about which state a qubit is in.
+But before we get there, we’ll have to talk about measurement and different bases.</p>
+
+<h1 id="basis-states">Basis States</h1>
+<p>A qubit is always in a state of superposition, even if we know it’s in a certain state, say, $\ket{0}$.
+We just have to be a bit more specific about what kind of superposition we’re talking about.
+In this case, if we measure a qubit and find it’s in state $\ket{0}$ we can say that in terms of the <em>computational basis</em> it’s not in superposition, but it is in a superposition in <em>other</em> measurement bases.
+To see why that is the case, take a look at the Bloch sphere below.</p>
+
+<center>
+<a title="Smite-Meister, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Bloch_sphere.svg"><img width="512" alt="Bloch sphere" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bloch_sphere.svg/725px-Bloch_sphere.svg.png" /></a>
+</center>
+
+<p>What is most often referred to as a superposition, is a superposition between the states $\ket{0}$ and $\ket{1}$, which are the basis states in the computational basis.
+So for example taking a qubit in the state $\ket{0}$ and applying the Hadamard gate to it, rotates the state vector around the y-axis by $\theta=\frac{\pi}{2}$, which brings it into the state $\ket{+}=\frac{\ket{0} + \ket{1}}{\sqrt{2}}$.
+That is, the state of the qubit is now in equal superposition between the states $\ket{0}$ and $\ket{1}$.</p>
+
+<p>But the $\ket{0}$ and $\ket{1}$ states are not the only basis states. There are infinitely many basis states, and we can always express the state of a qubit in terms of a superposition of these basis states.
+There are three requirements for a set of basis states to be considered a basis.
+The first is that they are <strong>orthogonal</strong>. They appear spatially parallel on the Bloch sphere (e.g. the “up” and “down” states $\ket{0}$ and $\ket{1}$, but they are geometrically orthogonal to each other.
+Two other features of basis states are that they are <strong>complete</strong> in the sense that they span the entire space of possible states and that they are <strong>normalised</strong> (i.e. the inner product of a basis states with itself is 1, to ensure we get valid probabilities).
+To see that for example the basis states $\ket{0}$ and $\ket{1}$ are complete and normalised, consider that you can reach any point on the Bloch Sphere by choosing appropriate $\theta$ and $\phi$ angles.</p>
+
+<p>So what are the different bases we typically encounter in quantum computing?</p>
+<ul>
+  <li>First of all there is computational basis, or z-basis with basis states
+    <ul>
+      <li>$\ket{0}$</li>
+      <li>$\ket{1}$</li>
+    </ul>
+  </li>
+  <li>Then there is the Hadamard basis, or x-basis. One way to get to these states from $\ket{0}$, as we have seen, is to rotate around the y-axis:
+    <ul>
+      <li>$\ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}$</li>
+      <li>$\ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}$</li>
+    </ul>
+  </li>
+  <li>And finally there is the y-basis, which you get to from, say, $\ket{0}$, by rotating around the x-axis:
+    <ul>
+      <li>$\ket{i} = \frac{\ket{0} + i\ket{1}}{\sqrt{2}}$</li>
+      <li>$\ket{-i} = \frac{\ket{0} - i\ket{1}}{\sqrt{2}}$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Of course we can also rewrite the computational basis vectors in terms of other basis states like the Hadamard basis states:</p>
+<ul>
+  <li>$\ket{0} = \frac{\ket{+} + \ket{-}}{\sqrt{2}}$</li>
+  <li>$\ket{1} = \frac{\ket{+} - \ket{-}}{\sqrt{2}}$</li>
+</ul>
+
+<p>which is a way of saying that the computational basis states are a superposition of the Hadamard basis states as claimed above.</p>
+
+<p>As you can see, any point on the Bloch Sphere can be expressed in any of these, or other, bases. And that’s why a qubit is always in a state of superposition <em>in some basis</em>, even if we know it’s in a certain state in the computational basis, say, $\ket{0}$.</p>
+
+<p>States vectors in the computational basis are just kets with a 1 in the position of the state and 0s elsewhere: $\ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix}$ and $\ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}$.
+The three conditions for basis vectors mentioned above can then be expressed as follows:</p>
+<ul>
+  <li><strong>orthogonality</strong>: $\braket{0|1} = \braket{1|0} = 0$</li>
+  <li><strong>normality</strong>: $\braket{0|0} = \braket{1|1} = 1$</li>
+  <li><strong>completeness</strong>: $\psi = \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix} = \psi_{1}\ket{0} + \psi_{2}\ket{1}$</li>
+</ul>
+
+<p>With the definition of an arbitratry quantum state $\psi = \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix}$ in place, we can see that the inner product of it with a basis state gives us a measure for how similar it is to that basis state.
+That is, $\braket{0|\psi} = \psi_{1}\braket{0|0} + \psi_{2}\braket{0|1} = \psi_{1}$, and $\braket{1|\psi} = \psi_{1}\braket{1|0} + \psi_{2}\braket{1|1} = \psi_{2}$.</p>
+
+<p>If we make the assumption that the normalization condition also holds for any arbitrary state, in other words, that any linear combination of basis states leads to a pure state - a state on the surface of the Bloch sphere, we obtain $\braket{\psi|\psi} = |\psi_{1}|^{2} + |\psi_{2}|^{2} = 1$.</p>
+
+<p>Substituting the expressions for $\psi_{1}$ and $\psi_{2}$ from above, we get</p>
+
+<p>$$
+\braket{\psi|\psi} = |\braket{0|\psi}|^{2} + |\braket{1|\psi}|^{2} = \psi_{1}^{2} + \psi_{2}^{2} = 1
+$$</p>
+
+<p>which basically yields the Born Rule.
+This expression tells us that projecting an arbitrary state vector onto a basis state not only gives us a measure of how similar the state is to the basis state.
+It also gives us something called the <strong>probability amplitudes</strong> $\psi_{1}$ and $\psi_{2}$, which, when squared, give us the probabilities of observing either state $\ket{0}$ or $\ket{1}$ when measuring the state $\psi$ in the computational basis.</p>
+
+<h1 id="measurement">Measurement</h1>
+
+<p>So far we’ve seen what basis states are mathematically and in terms of the Bloch Sphere.
+Let’s now see how to set up an experiment to measure a qubit in a certain basis.</p>
+
+<p>There are 2 parts to explaining measurement in quantum mechanics: running experiments and see what actually happens and the mathematical formalism that describes what happens.
+For the first part, it’s instructive to learn about the <a href="https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment">Stern-Gerlach experiments</a>.
+One could write an entire article about these experiments, but we’ll focus on only a few aspects here.</p>
+<center>
+<a title="Tatoute, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_experiment_svg.svg"><img width="1024" alt="Stern-Gerlach experiment svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Stern-Gerlach_experiment_svg.svg/1024px-Stern-Gerlach_experiment_svg.svg.png" /></a>
+</center>
+<p>The gist of the experiment is that we shoot a beam of silver atoms (2) through a magnetic field (3), and then we measure the deflection of the atoms on a screen (5).
+What we’re really measuring here is the spin of the atom.
+Depending on the spin of the atom, it gets deflected either up or down when it goes through the magnetic field.
+Before measurement it can point in any direction, but after measurement (after we observe it on the screen) always either points up or down.
+The up and down states are the basis states of the computational basis/ z-axis.</p>
+
+<p>This result is different than if we were to run it with a classical object, like a magnet, which can point in any direction just like the spin of an atom.
+If we were to shoot a magnet with a random orientation through the magnetic field, it would get deflected in proportion to its orientation.
+And if we were to repeat this experiment many times, we would see a continuous distribution of deflections on the screen (4).
+The silver atom however, being a quantum object, always gets deflected either up or down, and never in between.</p>
+
+<p>Before measurement, the state of the atom, it’s spin, is in a random superposition of the up and down states.
+But after measurement, the state of the atom is either up or down.
+So it is in a definite state, not in a superposition anymore, in the computational basis.
+This result is what is meant when one says that the act of measuring a qubit alters its state.
+One can verify that the atom is really not in a superposition anymore by letting it pass through another Stern-Gerlach apparatus after it got deflected up:
+If the second apparatus is oriented in the same direction as the first one (i.e. we measure in the computational basis again), and we take an atom that got deflected <strong>up</strong> by the first apparatus, it will get deflected <strong>up</strong> again by the second apparatus.</p>
+
+<center>
+<a title="MJasK, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_Analyzer_Sequential_Series_E1.png"><img width="1024" alt="Stern-Gerlach Analyzer Sequential Series E1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Stern-Gerlach_Analyzer_Sequential_Series_E1.png/1024px-Stern-Gerlach_Analyzer_Sequential_Series_E1.png" /></a>
+</center>
+<p><br /></p>
+
+<p>But it’s not just that the apparatus filtered out the atoms that were in the down state.
+There is another variant of this experiment which adds a second apparatus that is rotated by 90 degrees, effectively measuring the spin of the atom in the x-basis now.
+Behind that second apparatus is a third one which again measures the spin in the z-basis.</p>
+
+<p>The interesting result here is that when we measure the spin of the atom (which we measured to be the in the <strong>up</strong> state according to the first apparatus) in the x-bases, it seems to “reset” the state of the atom along the z-axis.
+We know this, because when we measure the spin of the atom in the z-basis for the second time (after having measured in the x-basis), we no longer have a 100% chance of finding the atom in the <strong>up</strong> state.
+Instead we again find that the atom is in an equal superposition of the up and down states.</p>
+<center>
+<a title="MJasK, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_Analyzer_Sequential_Series_E3.png"><img width="1024" alt="Stern-Gerlach Analyzer Sequential Series E3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Stern-Gerlach_Analyzer_Sequential_Series_E3.png/1024px-Stern-Gerlach_Analyzer_Sequential_Series_E3.png" /></a>
+</center>
+<p><br /></p>
+
+<p>One finding of the SG experiments is that we can never know both the spin of an atom in the x-basis and the z-basis (or any other basis) at the same time.
+This is also referred to as the different bases being <strong>incompatible</strong> with each other.</p>
+
+<p>Having seen what happens in the Stern-Gerlach experiments, let’s now see what happens mathematically when we measure a qubit.
+By convention, we measure a qubit in the computational basis, at which point we observe the qubit to be in either the $\ket{0}$ or $\ket{1}$ state.
+That is, we can’t actually measure the state of a qubit (in terms of it $\theta$ and $\phi$ rotations) with a single measurement.
+While a qubit is a probabilistic object, the act of measuring it will always yield a definite result.
+In that sense, measuring the qubit collapses the state of a qubit into one of the basis states.</p>
+
+<p>Recall that we can express an arbitrary qubit state as $\psi = \psi_{1}\ket{0} + \psi_{2}\ket{1}$, and that the amplitutes $\psi_{1}$ and $\psi_{2}$ can be obtained by taking the inner product of the state with the basis states: $\psi_{1} = \braket{0|\psi}$ and $\psi_{2} = \braket{1|\psi}$.
+This allows us to rewrite the state of the qubit in terms of the outer products of the basis states:
+\begin{equation}
+\ket{\psi} = \braket{0|\psi}\ket{0} + \braket{1|\psi}\ket{1} \\ 
+  =(\ket{0}\bra{0} + \ket{1}\bra{1})\ket{\psi}
+\end{equation}</p>
+
+<p>where $\ket{0}\bra{0} + \ket{1}\bra{1}$ is just the identity matrix.
+Crucially though we can think of $\ket{0}\bra{0}$ and $\ket{1}\bra{1}$ as the operators that get applied to the state of the qubit when they leave the top and bottom holes of the Stern-Gerlach apparatus, respectively.
+So when we measure the state of the qubit, we’re actually applying the operators $\ket{0}\bra{0}$ and $\ket{1}\bra{1}$ to the state of the qubit.</p>
+
+<p>For example, when we measure the $\ket{0}$ state, we apply the operator $\ket{0}\bra{0}$ to $\ket{\psi}$ which collapses the state of the qubit into the $\ket{0}$ state: 
+\begin{equation}
+\begin{bmatrix} 1 &amp; 0 \cr 0 &amp; 0 \end{bmatrix} \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix} = \begin{bmatrix} \psi_{1} \cr 0 \end{bmatrix} = \psi_{1} \ket{0}.
+\end{equation}</p>
+
+<p>In other words, after measurement, we state of the qubit is no longer $\psi$, but $\psi_{1}\ket{0}$, which is another way of saying that the act of measurement alters the state of a qubit.</p>
+
+<h1 id="how-is-this-different-from-classical-probability">How is this different from classical probability?</h1>
+<p>With all of the basics in place, we can now get to the question from the beginning: how is superposition different from mere uncertainty about which state a qubit is in?</p>
+
+<p>Let’s start with a quantum state
+\begin{equation}
+\Psi = \frac{1}{\sqrt{2}} ( \ket{0} + \ket{1} )
+\end{equation}</p>
+
+<p>This state is in a superposition of the $\ket{0}$ and $\ket{1}$ states, meaning it’s not the case that the state is either $\ket{0}$ or $\ket{1}$ with equal probability.
+Instead, there is a 0% chance that the state is in the $\ket{0}$ or the $\ket{1}$ state, and a 100% chance that the state is in the superposition of the two states, $\psi$.</p>
+
+<p>To see why, consider measuring the state not in the computational basis but another, incompatible, basis like the Hadamard basis.
+We can express the state $\Psi$ in terms of the Hadamard basis states because as we’ve seen above:</p>
+
+<p>\begin{equation}
+\ket{0} = \frac{1}{\sqrt{2}}(\ket{+} + \ket{-}) \\ 
+  \ket{1} = \frac{1}{\sqrt{2}}(\ket{+} - \ket{-})
+\end{equation}</p>
+
+<p>So by substituting we find that the state $\Psi$ actually corresponds to the $\ket{+}$ state in the Hadamard basis: $\ket{\Psi} = \ket{+}$.</p>
+
+<p>We can then run 2 experiments with our $\Psi$ state, one in the computational basis and one in the Hadamard basis.</p>
+<ul>
+  <li>In the computational basis, we measure the state to be either $\ket{0}$ or $\ket{1}$ with equal probability.</li>
+  <li>And in the Hadamard basis, we <strong>always</strong> find the state to be $\ket{+}$.</li>
+</ul>
+
+<p>Now consider the alternative scenario where $\Psi$ is not in a superposition, but in a classical probabilistic mixture of the $\ket{0}$ and $\ket{1}$ states.
+This means that the state of the qubit is either $\ket{0}$ or $\ket{1}$ with equal probability, instead of both at the same time.
+If we state is $\ket{0}$, then the state of the qubit in the Hadamard basis would be either $\ket{+}$ or $\ket{-}$ with equal probability.
+And likewise, if the state is $\ket{1}$, then the state of the qubit in the Hadamard basis would also be either $\ket{+}$ or $\ket{-}$ with equal probability.</p>
+
+<p>In other words, if we run the same 2 experiments as above:</p>
+<ul>
+  <li>In the computational basis, we measure the state to be either $\ket{0}$ or $\ket{1}$ with equal probability, as before.</li>
+  <li>But in the Hadamard basis, we measure the state to be either $\ket{+}$ or $\ket{-}$ with <strong>equal probability</strong>.</li>
+</ul>
+
+<p>So that is the key difference between superposition and classical probability.
+In superposition, quantum amplitudes are not independent of each other.
+They can interfere and effectively cancel each other out.
+This can be verified experimentally by preparing the same state multiple times and measuring it 2 incompatible bases, as described above.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>That’s a wrap for this article.
+We’ve covered a lot of ground, touching upon measurement bases, the Stern-Gerlach experiments and measurement in quantum mechanics.
+Finally we saw how superposition is different from mere uncertainty about which state a qubit is in.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#quantum" class="page__taxonomy-item" rel="tag">quantum</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#superposition" class="page__taxonomy-item" rel="tag">superposition</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2024/02/superposition/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2024/02/superposition/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2024/02/superposition/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2024/01/entanglement/" class="pagination--pager" title="Entanglement
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2024/01/entanglement/" rel="permalink">Entanglement
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  17 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-01-27T00:00:00-06:00">January 27, 2024</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>What is entanglement? How does it work? Why is it so strange? In this blog post we’ll explore these questions.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/jonvet"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Jonas Vetterle. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

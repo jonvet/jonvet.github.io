@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-03-31T05:21:32-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Personal page</title><subtitle>Quantum things</subtitle><author><name>Jonas Vetterle</name></author><entry><title type="html">Superposition</title><link href="http://localhost:4000/posts/2024/02/superposition/" rel="alternate" type="text/html" title="Superposition" /><published>2024-02-03T00:00:00-06:00</published><updated>2024-02-03T00:00:00-06:00</updated><id>http://localhost:4000/posts/2024/02/superposition</id><content type="html" xml:base="http://localhost:4000/posts/2024/02/superposition/"><![CDATA[<p>What is superposition? And how can something be in two states at the same time?</p>
+
+<h1 id="introduction">Introduction</h1>
+<p>One thing that can be really confusing is the notion of a qubit being in a superposition of states. After all, how can something be in two states at the same time? It’s not like a coin can be both heads and tails at the same time, right?</p>
+
+<p>The closest we can get to that is by spinning the coin, and while it’s spinning, it’s neither heads nor tails. And as soon as it lands, it’s either heads or tails.
+But that’s different from the coin being in both states at the same time - it’s just the coin spinning back and forth between heads and tails and us not knowing which state it’s in until we look at it.</p>
+
+<p>In this article we’ll see mathematically why it’s the case the superposition is different from mere uncertainty about which state a qubit is in.
+But before we get there, we’ll have to talk about measurement and different bases.</p>
+
+<h1 id="basis-states">Basis States</h1>
+<p>A qubit is always in a state of superposition, even if we know it’s in a certain state, say, $\ket{0}$.
+We just have to be a bit more specific about what kind of superposition we’re talking about.
+In this case, if we measure a qubit and find it’s in state $\ket{0}$ we can say that in terms of the <em>computational basis</em> it’s not in superposition, but it is in a superposition in <em>other</em> measurement bases.
+To see why that is the case, take a look at the Bloch sphere below.</p>
+
+<center>
+<a title="Smite-Meister, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Bloch_sphere.svg"><img width="512" alt="Bloch sphere" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bloch_sphere.svg/725px-Bloch_sphere.svg.png" /></a>
+</center>
+
+<p>What is most often referred to as a superposition, is a superposition between the states $\ket{0}$ and $\ket{1}$, which are the basis states in the computational basis.
+So for example taking a qubit in the state $\ket{0}$ and applying the Hadamard gate to it, rotates the state vector around the y-axis by $\theta=\frac{\pi}{2}$, which brings it into the state $\ket{+}=\frac{\ket{0} + \ket{1}}{\sqrt{2}}$.
+That is, the state of the qubit is now in equal superposition between the states $\ket{0}$ and $\ket{1}$.</p>
+
+<p>But the $\ket{0}$ and $\ket{1}$ states are not the only basis states. There are infinitely many basis states, and we can always express the state of a qubit in terms of a superposition of these basis states.
+There are three requirements for a set of basis states to be considered a basis.
+The first is that they are <strong>orthogonal</strong>. They appear spatially parallel on the Bloch sphere (e.g. the “up” and “down” states $\ket{0}$ and $\ket{1}$, but they are geometrically orthogonal to each other.
+Two other features of basis states are that they are <strong>complete</strong> in the sense that they span the entire space of possible states and that they are <strong>normalised</strong> (i.e. the inner product of a basis states with itself is 1, to ensure we get valid probabilities).
+To see that for example the basis states $\ket{0}$ and $\ket{1}$ are complete and normalised, consider that you can reach any point on the Bloch Sphere by choosing appropriate $\theta$ and $\phi$ angles.</p>
+
+<p>So what are the different bases we typically encounter in quantum computing?</p>
+<ul>
+  <li>First of all there is computational basis, or z-basis with basis states
+    <ul>
+      <li>$\ket{0}$</li>
+      <li>$\ket{1}$</li>
+    </ul>
+  </li>
+  <li>Then there is the Hadamard basis, or x-basis. One way to get to these states from $\ket{0}$, as we have seen, is to rotate around the y-axis:
+    <ul>
+      <li>$\ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}$</li>
+      <li>$\ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}$</li>
+    </ul>
+  </li>
+  <li>And finally there is the y-basis, which you get to from, say, $\ket{0}$, by rotating around the x-axis:
+    <ul>
+      <li>$\ket{i} = \frac{\ket{0} + i\ket{1}}{\sqrt{2}}$</li>
+      <li>$\ket{-i} = \frac{\ket{0} - i\ket{1}}{\sqrt{2}}$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Of course we can also rewrite the computational basis vectors in terms of other basis states like the Hadamard basis states:</p>
+<ul>
+  <li>$\ket{0} = \frac{\ket{+} + \ket{-}}{\sqrt{2}}$</li>
+  <li>$\ket{1} = \frac{\ket{+} - \ket{-}}{\sqrt{2}}$</li>
+</ul>
+
+<p>which is a way of saying that the computational basis states are a superposition of the Hadamard basis states as claimed above.</p>
+
+<p>As you can see, any point on the Bloch Sphere can be expressed in any of these, or other, bases. And that’s why a qubit is always in a state of superposition <em>in some basis</em>, even if we know it’s in a certain state in the computational basis, say, $\ket{0}$.</p>
+
+<p>States vectors in the computational basis are just kets with a 1 in the position of the state and 0s elsewhere: $\ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix}$ and $\ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}$.
+The three conditions for basis vectors mentioned above can then be expressed as follows:</p>
+<ul>
+  <li><strong>orthogonality</strong>: $\braket{0|1} = \braket{1|0} = 0$</li>
+  <li><strong>normality</strong>: $\braket{0|0} = \braket{1|1} = 1$</li>
+  <li><strong>completeness</strong>: $\psi = \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix} = \psi_{1}\ket{0} + \psi_{2}\ket{1}$</li>
+</ul>
+
+<p>With the definition of an arbitratry quantum state $\psi = \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix}$ in place, we can see that the inner product of it with a basis state gives us a measure for how similar it is to that basis state.
+That is, $\braket{0|\psi} = \psi_{1}\braket{0|0} + \psi_{2}\braket{0|1} = \psi_{1}$, and $\braket{1|\psi} = \psi_{1}\braket{1|0} + \psi_{2}\braket{1|1} = \psi_{2}$.</p>
+
+<p>If we make the assumption that the normalization condition also holds for any arbitrary state, in other words, that any linear combination of basis states leads to a pure state - a state on the surface of the Bloch sphere, we obtain $\braket{\psi|\psi} = |\psi_{1}|^{2} + |\psi_{2}|^{2} = 1$.</p>
+
+<p>Substituting the expressions for $\psi_{1}$ and $\psi_{2}$ from above, we get</p>
+
+<p>$$
+\braket{\psi|\psi} = |\braket{0|\psi}|^{2} + |\braket{1|\psi}|^{2} = \psi_{1}^{2} + \psi_{2}^{2} = 1
+$$</p>
+
+<p>which basically yields the Born Rule.
+This expression tells us that projecting an arbitrary state vector onto a basis state not only gives us a measure of how similar the state is to the basis state.
+It also gives us something called the <strong>probability amplitudes</strong> $\psi_{1}$ and $\psi_{2}$, which, when squared, give us the probabilities of observing either state $\ket{0}$ or $\ket{1}$ when measuring the state $\psi$ in the computational basis.</p>
+
+<h1 id="measurement">Measurement</h1>
+
+<p>So far we’ve seen what basis states are mathematically and in terms of the Bloch Sphere.
+Let’s now see how to set up an experiment to measure a qubit in a certain basis.</p>
+
+<p>There are 2 parts to explaining measurement in quantum mechanics: running experiments and see what actually happens and the mathematical formalism that describes what happens.
+For the first part, it’s instructive to learn about the <a href="https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment">Stern-Gerlach experiments</a>.
+One could write an entire article about these experiments, but we’ll focus on only a few aspects here.</p>
+<center>
+<a title="Tatoute, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_experiment_svg.svg"><img width="1024" alt="Stern-Gerlach experiment svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Stern-Gerlach_experiment_svg.svg/1024px-Stern-Gerlach_experiment_svg.svg.png" /></a>
+</center>
+<p>The gist of the experiment is that we shoot a beam of silver atoms (2) through a magnetic field (3), and then we measure the deflection of the atoms on a screen (5).
+What we’re really measuring here is the spin of the atom.
+Depending on the spin of the atom, it gets deflected either up or down when it goes through the magnetic field.
+Before measurement it can point in any direction, but after measurement (after we observe it on the screen) always either points up or down.
+The up and down states are the basis states of the computational basis/ z-axis.</p>
+
+<p>This result is different than if we were to run it with a classical object, like a magnet, which can point in any direction just like the spin of an atom.
+If we were to shoot a magnet with a random orientation through the magnetic field, it would get deflected in proportion to its orientation.
+And if we were to repeat this experiment many times, we would see a continuous distribution of deflections on the screen (4).
+The silver atom however, being a quantum object, always gets deflected either up or down, and never in between.</p>
+
+<p>Before measurement, the state of the atom, it’s spin, is in a random superposition of the up and down states.
+But after measurement, the state of the atom is either up or down.
+So it is in a definite state, not in a superposition anymore, in the computational basis.
+This result is what is meant when one says that the act of measuring a qubit alters its state.
+One can verify that the atom is really not in a superposition anymore by letting it pass through another Stern-Gerlach apparatus after it got deflected up:
+If the second apparatus is oriented in the same direction as the first one (i.e. we measure in the computational basis again), and we take an atom that got deflected <strong>up</strong> by the first apparatus, it will get deflected <strong>up</strong> again by the second apparatus.</p>
+
+<center>
+<a title="MJasK, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_Analyzer_Sequential_Series_E1.png"><img width="1024" alt="Stern-Gerlach Analyzer Sequential Series E1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Stern-Gerlach_Analyzer_Sequential_Series_E1.png/1024px-Stern-Gerlach_Analyzer_Sequential_Series_E1.png" /></a>
+</center>
+<p><br /></p>
+
+<p>But it’s not just that the apparatus filtered out the atoms that were in the down state.
+There is another variant of this experiment which adds a second apparatus that is rotated by 90 degrees, effectively measuring the spin of the atom in the x-basis now.
+Behind that second apparatus is a third one which again measures the spin in the z-basis.</p>
+
+<p>The interesting result here is that when we measure the spin of the atom (which we measured to be the in the <strong>up</strong> state according to the first apparatus) in the x-bases, it seems to “reset” the state of the atom along the z-axis.
+We know this, because when we measure the spin of the atom in the z-basis for the second time (after having measured in the x-basis), we no longer have a 100% chance of finding the atom in the <strong>up</strong> state.
+Instead we again find that the atom is in an equal superposition of the up and down states.</p>
+<center>
+<a title="MJasK, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_Analyzer_Sequential_Series_E3.png"><img width="1024" alt="Stern-Gerlach Analyzer Sequential Series E3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Stern-Gerlach_Analyzer_Sequential_Series_E3.png/1024px-Stern-Gerlach_Analyzer_Sequential_Series_E3.png" /></a>
+</center>
+<p><br /></p>
+
+<p>One finding of the SG experiments is that we can never know both the spin of an atom in the x-basis and the z-basis (or any other basis) at the same time.
+This is also referred to as the different bases being <strong>incompatible</strong> with each other.</p>
+
+<p>Having seen what happens in the Stern-Gerlach experiments, let’s now see what happens mathematically when we measure a qubit.
+By convention, we measure a qubit in the computational basis, at which point we observe the qubit to be in either the $\ket{0}$ or $\ket{1}$ state.
+That is, we can’t actually measure the state of a qubit (in terms of it $\theta$ and $\phi$ rotations) with a single measurement.
+While a qubit is a probabilistic object, the act of measuring it will always yield a definite result.
+In that sense, measuring the qubit collapses the state of a qubit into one of the basis states.</p>
+
+<p>Recall that we can express an arbitrary qubit state as $\psi = \psi_{1}\ket{0} + \psi_{2}\ket{1}$, and that the amplitutes $\psi_{1}$ and $\psi_{2}$ can be obtained by taking the inner product of the state with the basis states: $\psi_{1} = \braket{0|\psi}$ and $\psi_{2} = \braket{1|\psi}$.
+This allows us to rewrite the state of the qubit in terms of the outer products of the basis states:
+\begin{equation}
+\ket{\psi} = \braket{0|\psi}\ket{0} + \braket{1|\psi}\ket{1} \\ 
+  =(\ket{0}\bra{0} + \ket{1}\bra{1})\ket{\psi}
+\end{equation}</p>
+
+<p>where $\ket{0}\bra{0} + \ket{1}\bra{1}$ is just the identity matrix.
+Crucially though we can think of $\ket{0}\bra{0}$ and $\ket{1}\bra{1}$ as the operators that get applied to the state of the qubit when they leave the top and bottom holes of the Stern-Gerlach apparatus, respectively.
+So when we measure the state of the qubit, we’re actually applying the operators $\ket{0}\bra{0}$ and $\ket{1}\bra{1}$ to the state of the qubit.</p>
+
+<p>For example, when we measure the $\ket{0}$ state, we apply the operator $\ket{0}\bra{0}$ to $\ket{\psi}$ which collapses the state of the qubit into the $\ket{0}$ state: 
+\begin{equation}
+\begin{bmatrix} 1 &amp; 0 \cr 0 &amp; 0 \end{bmatrix} \begin{bmatrix} \psi_{1} \cr \psi_{2} \end{bmatrix} = \begin{bmatrix} \psi_{1} \cr 0 \end{bmatrix} = \psi_{1} \ket{0}.
+\end{equation}</p>
+
+<p>In other words, after measurement, we state of the qubit is no longer $\psi$, but $\psi_{1}\ket{0}$, which is another way of saying that the act of measurement alters the state of a qubit.</p>
+
+<h1 id="how-is-this-different-from-classical-probability">How is this different from classical probability?</h1>
+<p>With all of the basics in place, we can now get to the question from the beginning: how is superposition different from mere uncertainty about which state a qubit is in?</p>
+
+<p>Let’s start with a quantum state
+\begin{equation}
+\Psi = \frac{1}{\sqrt{2}} ( \ket{0} + \ket{1} )
+\end{equation}</p>
+
+<p>This state is in a superposition of the $\ket{0}$ and $\ket{1}$ states, meaning it’s not the case that the state is either $\ket{0}$ or $\ket{1}$ with equal probability.
+Instead, there is a 0% chance that the state is in the $\ket{0}$ or the $\ket{1}$ state, and a 100% chance that the state is in the superposition of the two states, $\psi$.</p>
+
+<p>To see why, consider measuring the state not in the computational basis but another, incompatible, basis like the Hadamard basis.
+We can express the state $\Psi$ in terms of the Hadamard basis states because as we’ve seen above:</p>
+
+<p>\begin{equation}
+\ket{0} = \frac{1}{\sqrt{2}}(\ket{+} + \ket{-}) \\ 
+  \ket{1} = \frac{1}{\sqrt{2}}(\ket{+} - \ket{-})
+\end{equation}</p>
+
+<p>So by substituting we find that the state $\Psi$ actually corresponds to the $\ket{+}$ state in the Hadamard basis: $\ket{\Psi} = \ket{+}$.</p>
+
+<p>We can then run 2 experiments with our $\Psi$ state, one in the computational basis and one in the Hadamard basis.</p>
+<ul>
+  <li>In the computational basis, we measure the state to be either $\ket{0}$ or $\ket{1}$ with equal probability.</li>
+  <li>And in the Hadamard basis, we <strong>always</strong> find the state to be $\ket{+}$.</li>
+</ul>
+
+<p>Now consider the alternative scenario where $\Psi$ is not in a superposition, but in a classical probabilistic mixture of the $\ket{0}$ and $\ket{1}$ states.
+This means that the state of the qubit is either $\ket{0}$ or $\ket{1}$ with equal probability, instead of both at the same time.
+If we state is $\ket{0}$, then the state of the qubit in the Hadamard basis would be either $\ket{+}$ or $\ket{-}$ with equal probability.
+And likewise, if the state is $\ket{1}$, then the state of the qubit in the Hadamard basis would also be either $\ket{+}$ or $\ket{-}$ with equal probability.</p>
+
+<p>In other words, if we run the same 2 experiments as above:</p>
+<ul>
+  <li>In the computational basis, we measure the state to be either $\ket{0}$ or $\ket{1}$ with equal probability, as before.</li>
+  <li>But in the Hadamard basis, we measure the state to be either $\ket{+}$ or $\ket{-}$ with <strong>equal probability</strong>.</li>
+</ul>
+
+<p>So that is the key difference between superposition and classical probability.
+In superposition, quantum amplitudes are not independent of each other.
+They can interfere and effectively cancel each other out.
+This can be verified experimentally by preparing the same state multiple times and measuring it 2 incompatible bases, as described above.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>That’s a wrap for this article.
+We’ve covered a lot of ground, touching upon measurement bases, the Stern-Gerlach experiments and measurement in quantum mechanics.
+Finally we saw how superposition is different from mere uncertainty about which state a qubit is in.</p>]]></content><author><name>Jonas Vetterle</name></author><category term="quantum" /><category term="superposition" /><summary type="html"><![CDATA[What is superposition? And how can something be in two states at the same time?]]></summary></entry><entry><title type="html">Entanglement</title><link href="http://localhost:4000/posts/2024/01/entanglement/" rel="alternate" type="text/html" title="Entanglement" /><published>2024-01-27T00:00:00-06:00</published><updated>2024-01-27T00:00:00-06:00</updated><id>http://localhost:4000/posts/2024/01/entanglement</id><content type="html" xml:base="http://localhost:4000/posts/2024/01/entanglement/"><![CDATA[<p>What is entanglement? How does it work? Why is it so strange? In this blog post we’ll explore these questions.</p>
+
+<h1 id="entanglement">Entanglement</h1>
+
+<p>Once referred to as “spooky action at a distance” by Einstein, entanglement is one of the most puzzling aspects of quantum mechanics.
+It’s implications are counterintuitive to us, because we are used to interacting with objects on “human scale”, or a few orders of magnitude smaller than that.
+Quantum particles on the other hand are many more orders of magnitude smaller.
+Perhaps one of the largest quantum objects created so far is a <a href="https://www.scientificamerican.com/article/physicists-create-biggest-ever-schroedingers-cat/">sapphire crystal</a> weighing 16 micrograms and consisting of about $10^{17}$ atoms.
+That’s truly is small, but quantum particles used in experiments or actual quantum computers, such as ions, electrons or photons, are even smaller.
+When studying quantum mechanics it’s a recurring theme that on such small scales, the world just works differently than what we’re used to.
+Entanglement is a specific manifestation of this.</p>
+
+<p>In this blog post we’re exploring what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange. Prerequisites are basic familiarity with <a href="https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation">Dirac notation</a> and quantum concepts like superposition.</p>
+
+<h1 id="bells-states">Bell’s states</h1>
+
+<p>We first consider the simplest example of achieving entanglement: a <a href="https://en.wikipedia.org/wiki/Bell_state">Bell state</a>.
+Specifically, we create the Bell state $\Psi^{-} = \frac{\ket{01}-\ket{10}}{\sqrt{2}}$, which is obtained by</p>
+
+<ul>
+  <li>preparing a 2 qubit register with both qubits in the $\ket{1}$ state</li>
+  <li>applying the Hadamard gate to the first qubit</li>
+  <li>applying the CNOT controlled by the first qubit, acting on the second</li>
+</ul>
+
+<p align="center">
+  <img src="../../../../images/bell_state_preparation.png" />
+</p>
+
+<p>Both qubits are in superposition, that is, if we were to measure either one we would find that they are in the $\ket{0}$ and the $\ket{1}$ states with 50% probability each.
+Their entanglement means that they are also correlated: if we were to measure the first qubit to be $\ket{1}$ then we also know with certainty that the second qubit is in state $\ket{0}$.</p>
+
+<h1 id="making-things-more-concrete">Making things more concrete</h1>
+
+<p>Rather than talking about our qubits as abstract concepts, let’s consider the case where we run an experiment using photons.
+Imagine we have a laser which when pointed towards some kind of crystal like <a href="https://en.wikipedia.org/wiki/Barium_borate">Barium borate</a> produces the entangled state $\Psi^{-}$ above.
+And since we are talking about photons specifically, let’s use the photon’s polarization (vertical or horizontal) to describe which state they’re in.</p>
+
+<p>In particular, let’s denote a horizontally polarized photon by state $\ket{H}$ (equivalent to a qubit in state $\ket{0}$) a vertically polarized photon by the state $\ket{V}$ (equivalent to $\ket{1}$).  Then the entangled state looks like $\frac{\ket{HV}-\ket{VH}}{\sqrt{2}}$.</p>
+
+<p>Also, imagine we give the first of this pair of entangled qubits to Alice and the second to Bob. Let’s use subscripts to denote which qubit belongs to who which makes the joint state now $\frac{\ket{H_{A}V_{B}}-\ket{V_{A}H_{B}}}{\sqrt{2}}$</p>
+
+<p>Lastly, Alice and Bob are equipped with a measurement device, a linearly polarized lens.
+For now assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.</p>
+
+<h1 id="experiment-outcomes">Experiment outcomes</h1>
+
+<p>As both photons are in superposition, Alice and Bob are initially equally likely to observe that their lens either blocks the photon or lets it through.
+Note that the joint state does not contain $\ket{V_{A}V_{B}}$ or $\ket{H_{A}H_{B}}$ which means that it’s not possible for both of them to see a photon, or for neither of them to see a photon (assuming they keep using their vertically polarized lenses). It’s certain that one of them will see the photon and the other one doesn’t.</p>
+
+<p>Moreover, while either of the 2 outcomes are 50% likely before the experiment, if Alice were to use her lens first and saw a photon, Bob would know with certainty that he wouldn’t observe a photon - he wouldn’t even have to measure it. Likewise, if Alice were to use her lens but didn’t see a photon, then Bob would know, without measuring, that he will definitely see a photon.</p>
+
+<p>The reason this happens is that the act of measuring alters the joint state. Before Alice’s photon hits the lens it’s in an equal superposition $\frac{\ket{H_{A}}-\ket{V_{A}}}{\sqrt{2}}$, that is, both measurement outcomes are equally likely. <a href="https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation">Mathematically</a>, measuring a  photon with arbitrary polarization, denoted by the ket (column vector) $\ket{\psi}$, with an arbitrarily polarized lens means calculating the inner product with the bra (row vector) $\bra{\phi}$. The resulting scalar can be interpreted as the probability amplitude of the photon passing the lens. 
+Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So measuring the superposition state with a vertically polarized lens gives us $\frac{\braket{V_{A}|H_{A}}-\braket{V_{A}|V_{A}}}{\sqrt{2}} = -\frac{1}{\sqrt{2}}$. Via the <a href="https://en.wikipedia.org/wiki/Born_rule">Born Rule</a> we obtain the probability of detecting the photon by squaring the amplitude and arrive at $\frac{1}{2}$ as promised.</p>
+
+<p>However, once measured with a vertically polarized lens, the photon is no longer in superposition. You can try this out yourself with polarization filters you can buy <a href="https://youtu.be/MzRCDLre1b4?t=945">online</a>! The lens will let exactly half of photons through and the other half are blocked. And the ones that make it through are then vertically polarized. You can prove it by holding a second lens behind the first one. If it’s vertically polarized it will not have any effect (all photons that pass the first lens will also pass the second one), and if it’s horizontally polarized, no photon will pass.</p>
+
+<p>Long story short, we know with certainty that any photons that pass the filter (i.e. Alice is able to observe it on the other side) are vertically polarized - the state of her photon has collapsed to just $\ket{V_{A}}$. If Alice didn’t observe the photon because it was blocked by her lens it would mean the state of her photon collapsed to $\ket{H_{A}}$. For Bob that means that his photons collapsed to the other state. To conclude, Alice’s act of measuring, if she observed the photon, collapses the joint state to $\ket{V_{A}H_{B}}$.</p>
+
+<h1 id="whats-special-about-this">What’s special about this?</h1>
+
+<p>If you wonder why this is exciting, consider a classical variant of this experiment. Instead of 2 quantum objects let’s use 2 everyday objects like <a href="https://www.sciencenews.org/blog/context/entanglement-spooky-not-action-distance">gloves</a>. Imagine that we have a left-handed and a right-handed glove and put them into separate boxes. We then send Alice and Bob one of the boxes each at random. If Alice opens her box first and finds a left-handed glove, then Bob knows with certainty that his glove will be right-handed, and vice versa. It is also impossible for both Alice and Bob to get a left-handed glove, or both to get a right-handed-glove. So everything seems exactly the same as in our photon experiment.</p>
+
+<p>But here is the difference: the gloves have a definitive handedness at any time during the experiment. This is different from our photons. Until they are measured the photons are in superposition, which means they do not have a definitive polarization. In our experiment, it’s only when Alice measures her photon with her lens that it’s polarization is determined. And what’s more, also the polarization of Bob’s photon is determined, even though it is not measured. The strange thing is not only that, but also that this seems to imply that even if the photons were millions of miles apart, measuring Alice’s photon would “immediately” determine the state of Bob’s photon. but clearly that can’t be possible, because nothing can travel faster than the speed of light, including the information of Alice’s measurement.</p>
+
+<p>This is the “spooky action at a distance” that Einstein referred to.</p>
+
+<h1 id="hidden-variables-and-bells-inequality">Hidden variables and Bell’s Inequality</h1>
+
+<p>To Einstein the conundrum of entanglement only seemed possible if the joint state of the two photons somehow got determined locally before they were separated and sent to Alice and Bob. So the information that Alice’s photon will be measured in the $\ket{V}$ state and Bob’s in the $\ket{H}$ state would have to be stored in a hidden, unobservable variable.</p>
+
+<p>There is a great <a href="https://www.sciencenews.org/blog/context/entanglement-spooky-not-action-distance">blog post</a> about the disagreement of Einstein and Bohr on this topic. For the remainder of this blog post we’ll talk about Bell’s Inequality and how it disproves the notion of hidden variables. Entanglement appears to be spooky after all!</p>
+
+<p>To start off, recall that so far we’ve equipped Alice and Bob with vertically polarized lenses. Given the fact that we put our photons in the joint state $\Psi^{-}$, in which both photons are in equal superposition of the $\ket{V}$ and $\ket{H}$ states, Alice and Bob always obtain one of the 2 results: either Alice sees a photon and Bob doesn’t, or Alice doesn’t see a photon and Bob does. In other words, their measurements <strong>always disagree</strong>.</p>
+
+<p>However things change if we allow Alice and Bob to slightly rotate their lenses to obtain different diagonal polarizations. In this case, even if Alice measures a vertically polarized photon, which means that Bob’s photon in horizontally polarized, there is still a chance that he also observes a photon. So if Alice and Bob orient their lenses differently it’s possible for their measurements to <strong>agree or disagree</strong>.</p>
+
+<p>The proof that hidden variables cannot explain the relationship between entangled quantum particles works by contradiction. First, we assume that hidden variables do explain entanglement and derive an inequality that has to hold if the hypothesis of hidden variables was true. This inequality was originally derived by John Bell in 1964, and it puts a limit on how often Alice and Bob’s measurements would match. Then we run actual quantum experiments to show that the inequality doesn’t always hold. Alice and Bob’s measurements can actually match more often. This disproves that hidden variables are the driving force behind the “spooky action at a distance” and provides evidence for the standard quantum view that quantum particles have properties that are only determined when measured. I’ll loosely follow the slides from <a href="https://courses.physics.illinois.edu/phys419/sp2018/lectures/Lecture19.pdf">this lecture</a>.</p>
+
+<h3 id="assume-hidden-variables-theory-is-correct">Assume hidden variables theory is correct</h3>
+
+<p>Let’s start with the assumption that hidden variables are a valid explanation. We change the experimental setup and allow Alice and Bob to randomly rotate their lens to $0^{\circ}$, $120^{\circ}$ or $240^{\circ}$ instead of just using a vertically polarized lens. Remember we said that before we send the photons to Alice and Bob, their joint state has to be determined locally and stored in some kind of hidden variable. The hidden state of the photon is then a rule that determines whether it will pass through Alice and Bob’s lenses at each of the 3 orientations. And in order to adhere to the joint Bell state, it has to be the case that when Alice and Bob end up choosing the same orientation, their measurement results will disagree, e.g. Alice sees a photon and Bob doesn’t.</p>
+
+<p>There are 8 different hidden states the photons can take:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">State 1</th>
+      <th style="text-align: center">State 2</th>
+      <th style="text-align: center">State 3</th>
+      <th style="text-align: center">State 4</th>
+      <th style="text-align: center">State 5</th>
+      <th style="text-align: center">State 6</th>
+      <th style="text-align: center">State 7</th>
+      <th style="text-align: center">State 8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice sees photon at $0^{\circ}$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice sees photon at $120^{\circ}$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice sees photon at $240^{\circ}$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob sees photon at $0^{\circ}$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob sees photon at $120^{\circ}$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob sees photon at $240^{\circ}$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">$\checkmark$</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">$\checkmark$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So for example, if the entangled photons are in hidden state 4, it is predetermined that Alice will see a photon if she orients her lens at $120^{\circ}$ or $240^{\circ}$, but not at $0^{\circ}$. At the same time, Bob will not see the photon if he orients his lens at $120^{\circ}$ or $240^{\circ}$, but will see it at $0^{\circ}$.</p>
+
+<p>With this in mind we can now run the experiment as described above: create the entangled state $\Psi^{-}$, give Alice and Bob one of the photons each (which we now assume are in any of the 8 hidden states), let them randomly choose to rotate their lens to $0^{\circ}$, $120^{\circ}$ or $240^{\circ}$, and see how often their measurements disagree (one of them sees a photon and the other does not). But actually we don’t even have to run the experiments - we can just think it through.</p>
+
+<p>For example, for <strong>State 1</strong> it’s easy to see that their measurements would always be different: Alice always sees the photon and Bob never sees it.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Alice rotates $0^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $120^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $240^{\circ}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Bob rotates $0^{\circ}$</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $120^{\circ}$</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $240^{\circ}$</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+      <td style="text-align: center">Alice $\checkmark$, Bob X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Or in the case of <strong>State 6</strong> we see that their measurements will disagree in $\frac{5}{9}=55.6\%$ of the time.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Alice rotates $0^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $120^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $240^{\circ}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Bob rotates $0^{\circ}$</td>
+      <td style="text-align: center"><strong>Alice X, Bob $\checkmark$</strong></td>
+      <td style="text-align: center">Alice$\checkmark$, Bob $\checkmark$</td>
+      <td style="text-align: center"><strong>Alice X, Bob $\checkmark$</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $120^{\circ}$</td>
+      <td style="text-align: center">Alice X, Bob X</td>
+      <td style="text-align: center"><strong>Alice $\checkmark$, Bob X</strong></td>
+      <td style="text-align: center">Alice X, Bob X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $240^{\circ}$</td>
+      <td style="text-align: center"><strong>Alice X, Bob $\checkmark$</strong></td>
+      <td style="text-align: center">Alice$\checkmark$, Bob $\checkmark$</td>
+      <td style="text-align: center"><strong>Alice X, Bob $\checkmark$</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If we repeat this for all 8 hidden states we see that the disagreement is either $100\%$ (<strong>State 1</strong> and <strong>State 8</strong>) or $55.6\%$ (all other cases).</p>
+
+<p>And this gives us Bell’s Inequality under the assumption of hidden variables:</p>
+
+<p style="text-align: center; font-style: italic;">Alice and Bob's measurements disagree $\ge55.6\%$ of the time.</p>
+
+<h3 id="what-happens-in-actual-quantum-experiments">What happens in actual quantum experiments</h3>
+
+<p>In actual quantum experiments this inequality is violated. Alice and Bob’s measurements agree $50\%$ of the time and hence the hidden variables explanation is not valid.</p>
+
+<p>This time round we just need a single table, because we don’t have to consider 8 different hidden variable states (because we don’t assume they exist).</p>
+
+<p>First consider the cases where Alice and Bob rotate their lenses by the same amount. We already now that in this case their measurements will always be different from each other. That’s because we are dealing with the entangled state $\Psi^{-}$, in which upon measuring one of them will find their photon in the $\ket{H}$ and the other in the $\ket{V}$. These states are perpendicular to each other (they are basis states), so it’s impossible for both of them to get the same measurement result when they orient their lens at the same angle.</p>
+
+<p>Next consider the case where Alice rotates her lens by $0^{\circ}$ (horizontally polarized) and Bob by $120^{\circ}$. If Alice doesn’t see a photon it means that her photon is in the $\ket{V}$ state and Bob’s in the $\ket{H}$ state. So we have to calculate how likely it is that Bob observes a photon. From the unit circle we know that $cos(120^{\circ}) = -\frac{1}{2}$ and $sin(120^{\circ}) = \frac{\sqrt3}{2}$. So in terms of the basis vectors this is equal to $\frac{1}{2}\bra{H} + \frac{\sqrt3}{2}\bra{V}$.</p>
+
+<p>By the Born Rule, the probability for Bob to observe the photon (which is in the $\ket{H}$ state) is then</p>
+
+<p>\begin{equation}
+|-\frac{1}{2}\braket{H|H} + \frac{\sqrt3}{2}\braket{V|H}|^{2}\\= |-\frac{1}{2} \times 1 +\frac{\sqrt{3}}{2} \times 0|^{2}= \frac{1}{4}
+\end{equation}</p>
+
+<p>By the same logic, if Bob rotated his lens by $240^{\circ}$, he would observe the photon with probability</p>
+
+<p>$$
+|-\frac{1}{2}\braket{H|H} - \frac{\sqrt3}{2}\braket{V|H}|^{2} = \frac{1}{4}
+$$</p>
+
+<p>In other words, if Alice doesn’t observe the photon, Bob observes his with $25\%$ probability. The same is true if Alice <strong>does</strong> observe her photon, which means her photon is in the $\ket{H}$ state and Bob’s in the $\ket{V}$ state. In this case the chance that Bob doesn’t observe a photon is 1 minus the probability that he does:</p>
+
+<p>$$
+1 - |-\frac{1}{2}\braket{H|V} + \frac{\sqrt3}{2}\braket{V|V}|^{2} = \frac{1}{4}
+$$</p>
+
+<p>and</p>
+
+<p>$$
+1 - |-\frac{1}{2}\braket{H|V} - \frac{\sqrt3}{2}\braket{V|V}|^{2} = \frac{1}{4}
+$$</p>
+
+<p>So we see that the chance that Alice and Bob’s measurements disagree is $25\%$.
+By symmetry we get the same probabilities if we just swapped Alice and Bob.</p>
+
+<p>Lastly, the case where Alice rotates her lens by $120^{\circ}$ and Bob by $240^{\circ}$. We don’t actually have to repeat the calculations. 
+We can just define different set of basis states $\ket{H^{\ast}}$ and $\ket{V^{\ast}}$ which are rotated by $-120^{\circ}$ relative to $\ket{H}$ and $\ket{V}$ and obtain the same result as when the lenses were rotated by $0^{\circ}$ and $120^{\circ}$.</p>
+
+<p>We can summarize the above results in a table which shows the probability that Alice and Bob’s measurements disagree:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Alice rotates $0^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $120^{\circ}$</th>
+      <th style="text-align: center">Alice rotates $240^{\circ}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Bob rotates $0^{\circ}$</td>
+      <td style="text-align: center">$100\%$</td>
+      <td style="text-align: center">$25\%$</td>
+      <td style="text-align: center">$25\%$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $120^{\circ}$</td>
+      <td style="text-align: center">$25\%$</td>
+      <td style="text-align: center">$100\%$</td>
+      <td style="text-align: center">$25\%$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob rotates $240^{\circ}$</td>
+      <td style="text-align: center">$25\%$</td>
+      <td style="text-align: center">$25\%$</td>
+      <td style="text-align: center">$100\%$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Finally, taking the average we find that</p>
+
+<p style="text-align: center; font-style: italic;">Alice and Bob's measurements disagree $50\%$ of the time.</p>
+
+<p>This violates the inequality we derived earlier, which has to hold if the relationship between entangled quantum particles was explained by hidden variables.</p>
+
+<p>We’ve only chosen the angles $0^{\circ}$, $120^{\circ}$ and $240^{\circ}$ because they end up giving us round numbers. This result can be shown for other angles too, but not all. But that’s not necessary - we just needed to show that for <em>some</em> angles Bell’s Inequality is violated.</p>
+
+<h1 id="concluding-remarks">Concluding remarks</h1>
+<p>In this article we went through what it means for 2 qubits to be entangled mathematically. We also discussed that experimental results cannot be explained by classical hidden variables and that instead there is evidence for “spooky action at a distance”.
+There is a lot more to say about what one can do with entangled qubits and why entanglement is different from mere correlation, but that’s for another blog post.</p>]]></content><author><name>Jonas Vetterle</name></author><category term="quantum" /><category term="entanglement" /><summary type="html"><![CDATA[What is entanglement? How does it work? Why is it so strange? In this blog post we’ll explore these questions.]]></summary></entry></feed>
